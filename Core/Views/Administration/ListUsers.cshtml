@@ -1,0 +1,65 @@
+﻿@model List<IdentityUser>
+@{
+    ViewBag.Title = "List of Users";
+}
+
+
+@if (Model.Any())
+{
+    <div class="card mt-1 aTransp myCard">
+        <h4 class="card-header alert alert-success mb-0 borderH4">
+            List Users
+        </h4>
+        <a class="btn btn-primary m-2" style="width:auto" asp-action="register" asp-controller="Account">Add New</a>
+    </div>
+
+    @foreach (var user in Model)
+    {
+        <div class="radiusMode">
+            <div class="card mt-1 mb-1 alert-primary myCard aTransp">
+                <div class="card-header borderH4 divContainer">
+                    User Id: @user.Id
+                </div>
+                <div class="card-body borderH4">
+                    <h4 class="card-title m-0">@user.UserName</h4>
+                </div>
+
+                <div class="card-footer borderH4 divContainer">
+                    <div>
+                        <form method="post" asp-action="DeleteUser" asp-controller="Administration" asp-route-id="@user.Id">
+                            <a asp-action="EditUser" asp-controller="Administration" asp-route-id="@user.Id" class="btn btn-primary">Edit</a>
+                            <span id="deleteSpan_@user.Id">
+                                <a href="#" class="btn btn-danger" onclick="confirmDelete('@user.Id', true)">Delete</a>
+                            </span>
+                            <span style="display:none" id="confirmDeleteSpan_@user.Id">
+                                <span>Do you really want to delete <b>@user.UserName?</b></span>
+                                <a href="#" class="btn btn-success" onclick="confirmDelete('@user.Id', false)">No</a>
+                                <button type="submit" class="btn btn-danger">Yes</button>
+                            </span>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    }
+
+}
+else
+{
+    <div class="card mt-1 myCard aTransp">
+        <div class="card-header divContainer">
+            No users registered yet
+        </div>
+        <div class="card-body">
+            <h4 class="card-title">
+                Use the  button below to register a user
+            </h4>
+            <a asp-action="register" asp-controller="account" class="btn btn-primary" style="width:auto">Add User</a>
+        </div>
+    </div>
+}
+
+@section Scripts{
+    <script src="~/js/myscripts.js"></script>
+}

@@ -1,0 +1,74 @@
+﻿@model LoginViewModel
+@{
+    ViewBag.Title = "User Login";
+#pragma warning disable CS8602 // Possible null reference return.
+}
+
+
+<h4 class="alert alert-success mt-2 mb-1 radiusMode borderH4">User Login</h4>
+<div class="row divContainer radiusMode m-0">
+    <div class="col-md-10 m-auto bTransp radiusInput">
+        <form method="post">
+            <br />
+            <div asp-validation-summary="All" class="text-danger"></div>
+       
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" placeholder="Email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Password"></label>
+                <input asp-for="Password" class="form-control" placeholder="Password" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="custom-checkbox">
+                    <label asp-for="RememberMe">
+                        <input asp-for="RememberMe" />
+                        @Html.DisplayNameFor(m=>m.RememberMe)
+                    </label>
+                </div>
+            </div>
+
+            <h7> <button type="submit" class="btn btn-primary mr-2 mb-2 " >Login</button>    you do not have an account with us <a asp-action="register" asp-controller="account">click here </a> to register</h7>
+          
+            <div> <a asp-action="ForgotPassword" asp-controller="Account">Forgotten password</a></div>
+           
+           
+        </form>
+        <br />
+
+
+
+
+        <h4 class="alert alert-success radiusMode borderH4">Other Possibilities</h4>
+        <div>
+            @{
+                if (Model.ExternalLogins.Count == 0)
+                {
+                    <div>
+                        No external logins configured
+                    </div>
+                }
+                else
+                {
+                    <form method="post" asp-action="ExternalLogin" asp-controller="Account" asp-route-returnUrl="@Model.ReturnUrl">
+                        @foreach(var provider in Model.ExternalLogins)
+                        {
+                            <button type="submit" name="provider" value="@provider.Name" 
+                            title="Login using your @provider.DisplayName account" class="btn btn-primary" style="width:auto">
+                            @provider.DisplayName
+                            </button>
+                        }
+                    </form>
+                }
+            }
+            <br />
+        </div>
+    </div>
+
+</div>

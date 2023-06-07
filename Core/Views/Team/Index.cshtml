@@ -1,0 +1,43 @@
+﻿@model TeamIndexViewModel
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "List Team Members";
+   
+}
+
+
+
+<div class="divContainer radiusMode">
+    <div class="card-deck m-3 position-relative">
+        @foreach (var emp in Model.ListTeamMembers)
+        {
+            var photopath = "~/images/" + (emp.PhotoPath ?? "react.jpg");
+
+            <div class="card m-3 myCard radiusMode" style="min-width:18rem; max-width:30.5%;">
+                <div class="card-header text-center divContainer">
+                    <h3 class="text-capitalize">@emp.Name</h3>
+                </div>
+
+                <img class="card-img-top radiusMode imageThumbail" src="@photopath" asp-append-version="true">
+            
+                <div class="card-footer text-center aTransp divContainer">
+                    <a asp-controller="Team" asp-action="Details" asp-route-id="@emp.Id" class="btn btn-primary m-1">
+                        <img src="~/iconsimages/viewicon.png" height="30" width="auto" class="radiusMode" asp-append-version="true" />
+                    </a>
+                    <a asp-controller="Team" asp-action="Edit" asp-route-id="@emp.Id" class="btn btn-primary m-1">
+                        <img src="~/iconsimages/EditIcon1.png" height="30" width="auto" class="radiusMode" asp-append-version="true" />
+                    </a>
+                    <a href="#" class="btn btn-danger m-1">
+                        <img src="~/iconsimages/delete.png" height="30" width="auto" class="radiusMode" asp-append-version="true" />
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+
+

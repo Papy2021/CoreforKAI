@@ -1,0 +1,28 @@
+﻿@if (ViewBag.ErrorTitle == null)
+{
+
+    <div class="alert alert-danger mt-2">
+        <h3>
+            An Error occured while processing your request.
+            The support team is notified and we're working on the fix'
+        </h3>
+
+        <hr />
+
+        <h5>Please Contact us on <a href="#">pktsangblue@gmail.com</a></h5>
+    </div>
+
+
+}
+else
+{
+    <div class="alert alert-danger text-center text-danger mt-2">
+        <h1>@ViewBag.ErrorTitle</h1>
+        <hr />
+        <h5>
+            @ViewBag.ErrorMessage
+        </h5>
+    </div>
+
+}
+

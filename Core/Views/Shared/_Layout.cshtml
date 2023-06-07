@@ -1,0 +1,140 @@
+﻿@inject SignInManager<IdentityUser> signInManage;
+@inject IAuthorizationService _userAuthorization;
+
+@{#pragma warning disable CS8602}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <script src="~/lib/jquery/jquery.js"></script>
+    <script src="~/lib/jquery-validate/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
+    <link href="~/my_css/mystyle.css" rel="stylesheet" />
+    <title>@ViewBag.Title</title>
+</head>
+
+<body>
+    <div class="manDiv">
+        <div class="container radiusInput bTransp">
+            <nav class="navbar navbar-expand-sm bg-dark navbar-dark radiusMode mt-1 navHover">
+
+                <a class="navbar-brand" asp-action="Welcome" asp-controller="Home">
+                    <img src="~/images/kailogo.png" height="40" width="40" class="radiusMode" asp-append-version="true" />
+                </a>
+
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#collapsibleNavbar">
+                    <span class="navbar-toggler-icon"> </span>
+                </button>
+                <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a asp-action="Welcome" asp-controller="Home" class="nav-link">Home</a>
+                        </li>
+
+
+
+                        <li class="nav-item dropdown navDropMenu">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                Team
+                            </a>
+
+                            <div class="dropdown-menu myCard" aria-labelledby="navbarDropdownMenuLink" style="border:1px solid sienna">
+                                <a asp-action="index" asp-controller="Team" class="dropdown-item">Consult</a>
+                                @if (signInManage.IsSignedIn(User) && User.IsInRole("Admin") || signInManage.IsSignedIn(User) && User.IsInRole("Super Admin")
+                                || signInManage.IsSignedIn(User) && (await _userAuthorization.AuthorizeAsync(User, "AllAllowedPolicy")).Succeeded)
+                                {
+                                    <a asp-action="Create" asp-controller="Team" class="dropdown-item">Create</a>
+ 
+                                }
+                               
+                            </div>
+                        </li>
+
+
+                        <li class="nav-item dropdown navDropMenu">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                               aria-expanded="false">
+                                Gallery
+                            </a>
+
+                            <div class="dropdown-menu myCard" aria-labelledby="navbarDropdownMenuLink" style="border:1px solid sienna">
+                                <a href="#" class="dropdown-item">Gallery Photos</a>
+                                @if (signInManage.IsSignedIn(User) && User.IsInRole("Admin") || signInManage.IsSignedIn(User) && User.IsInRole("Super Admin")
+                                || signInManage.IsSignedIn(User) && (await _userAuthorization.AuthorizeAsync(User, "AllAllowedPolicy")).Succeeded)
+                                {
+                                    <a href="#" class="dropdown-item">Add Photo</a>
+                                }
+                                <a href="#" class="dropdown-item">Gallery Videos</a>
+                            </div>
+                        </li>
+
+                        @if (signInManage.IsSignedIn(User))
+                        {
+                            <li class="nav-item dropdown navDropMenu">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    Manage
+                                </a>
+
+                                <div class="dropdown-menu myCard" aria-labelledby="navbarDropdownMenuLink" style="border:1px solid sienna">
+                                    @if (signInManage.IsSignedIn(User) && User.IsInRole("Admin") || signInManage.IsSignedIn(User) && User.IsInRole("Super Admin")
+                                   || signInManage.IsSignedIn(User) && (await _userAuthorization.AuthorizeAsync(User, "AllAllowedPolicy")).Succeeded)
+                                    {
+                                        <a asp-action="listUsers" asp-controller="Administration" class="dropdown-item">Users</a>
+                                        <a asp-action="listRoles" asp-controller="Administration" class="dropdown-item">Roles</a>
+                                    }
+                                    <a asp-action="ChangePassword" asp-controller="Account" class="dropdown-item">Password</a>
+                                </div>
+                            </li>
+                        }
+                    </ul>
+
+                    <ul class="navbar-nav ml-auto">
+                        @if (@signInManage.IsSignedIn(User))
+                        {
+                            <li class="nav-item">
+                                <form method="post" asp-action="logout" asp-controller="account">
+                                    <button type="submit" class="nav-link btn btn-link py-0"
+                                            style="width:auto;">
+                                        Logout - @User.Identity.Name
+                                    </button>
+                                </form>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a asp-action="register" asp-controller="account" class="nav-link">Register</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a asp-action="login" asp-controller="account" class="nav-link">Login</a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </nav>
+            <div>
+                @RenderBody()
+            </div>
+            @{
+                if (IsSectionDefined("Scripts"))
+                {
+                    RenderSection("Scripts", required: true);
+                }
+            }
+
+            <footer class="radiusMode">
+                <h1 class="text-center">Footer Code Here</h1>
+            </footer>
+        
+        </div>
+    </div>
+ 
+</body>
+</html>

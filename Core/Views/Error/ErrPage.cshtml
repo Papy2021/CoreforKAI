@@ -1,0 +1,14 @@
+﻿@*@{
+    Layout = null;
+}*@
+<link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+
+
+
+<body class="alert alert-dark">
+    <div class="alert alert-danger mt-2 mb-2 mr-2 ml-2">
+        <h1>@ViewBag.MessageEr</h1>
+        <hr />
+        <a asp-controller="Home" asp-action="Welcome"  class="btn btn-outline-success" style="width:auto">Click Here To View All Users</a>
+    </div>
+</body>

@@ -1,0 +1,68 @@
+﻿
+@model TeamDetailsViewModel
+@{
+    //Layout = "~/Views/Shared/_Layout.cshtml";// _ViewStart File Set the Layout Page.
+    ViewBag.Title = "Member Details";
+    var photopath = "~/images/" + (Model.Member.PhotoPath ?? "react.jpg");
+}
+
+<div class="row justify-content-center m-2 divContainer radiusMode">
+    <div class="col-md-8 m-2">
+        <div class="card myCard radiusMode">
+            <div class="card-header text-center">
+                <h3 class="mb=0 text-capitalize">@Model.Member.Name</h3>
+            </div>
+            <div class="card-body text-center">
+
+                <img class="card-img-top imageDetailsView radiusMode img-fluid" src="@photopath" asp-append-version="true" />
+                
+                <div class="container container-fluid manDiv mt-3 radiusMode">
+                    <div class="row text-left">
+                        <div class="col-md-4 mt-3 mb-3 ml-3 radiusMode">
+                            <p class="mb-2 text-capitalize">
+                                <img src="~/iconsimages/location.png" height="25" width="auto" class="radiusMode" asp-append-version="true" />
+                                @Model.Member.Country
+                            </p>
+                            <p>
+                                <img src="~/iconsimages/contract.png" height="25" width="auto" class="radiusMode" asp-append-version="true" />
+                                @Model.Member.Position
+                            </p>
+
+
+                            <p>
+                                <img src="~/iconsimages/Phone_icon.png" height="25" width="auto" class="radiusMode" asp-append-version="true" />
+                             @Model.Member.Phone
+                            </p>
+
+                            <p class="text-capitalize" >
+                                <img src="~/iconsimages/id.png" height="25" width="auto" class="radiusMode" asp-append-version="true" />
+                               @Model.Member.Nationality
+                            </pclass>
+
+                        </div>
+                        <div class="col-md-7 text-justify mt-3 mb-3 ml-3 radiusMode" style="border:1px solid red">
+                            <h5 class="mt-2" style="color:sienna">Summary
+                               
+                            </h5>
+                            <p>
+                             @Model.Member.Summary
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer text-center aTransp">
+                <a asp-controller="Team" asp-action="Index" class="btn btn-primary">
+                    <img src="~/iconsimages/left.png" height="30" width="auto" class="radiusMode" asp-append-version="true" />
+                </a>
+                <a asp-controller="Team" asp-action="Edit" asp-route-id="@Model.Member.Id" class="btn btn-primary">
+                    <img src="~/iconsimages/EditIcon1.png" height="30" width="auto" class="radiusMode" asp-append-version="true" />
+                </a>
+                <a href="#" class="btn btn-danger">
+                    <img src="~/iconsimages/delete.png" height="30" width="auto" class="radiusMode" asp-append-version="true" />
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

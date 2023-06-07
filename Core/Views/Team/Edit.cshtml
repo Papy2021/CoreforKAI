@@ -1,0 +1,95 @@
+﻿@model EditMemberViewModel;
+@{
+
+    ViewBag.Title = "Edit Member";
+    var PhotPath = "~/images/"+ (Model.CurrentPhotoPath??"react.jpg");
+}
+
+<form enctype="multipart/form-data" asp-controller="Team" asp-action="Edit" method="post" class="mt-2">
+
+    <div class="row m-2 divContainer radiusMode bTransp">
+        <div asp-validation-summary="All" class="text-danger mt-2"></div>
+    </div>
+    <div class="row mt-2 divContainer radiusMode bTransp">
+        <div class="col-md-5 m-auto">
+
+            <div class="form-group mt-2">
+                <label asp-for="Name"></label>
+                <input asp-for="Name" class="form-control" placeholder="Name" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Photo"></label>
+                <div class="custom-file">
+                    <input asp-for="Photo" class="form-control custom-file-input">
+                    <label class="custom-file-label">Choose File...</label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Position"></label>
+                <select asp-for="Position" asp-items="@Html.GetEnumSelectList<Position>()"
+                        class="custom-select mr-sm-2">
+                </select>
+                <span asp-validation-for="Position" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Country"></label>
+                <input asp-for="Country" class="form-control" placeholder="Country" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-md-5 m-auto">
+            <div class="form-group mt-2">
+                <label asp-for="Phone"></label>
+                <input asp-for="Phone" class="form-control" placeholder="Phone" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Nationality"></label>
+                <input asp-for="Nationality" class="form-control" placeholder="Nationality" />
+                <span asp-validation-for="Nationality" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <label asp-for="Summary"></label>
+                <textarea asp-for="Summary" class="form-control" placeholder="Summary" style="height:120px"></textarea>
+                <span asp-validation-for="Summary" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row m-0 divContainer radiusMode bTransp mt-3">
+        <div class="col-md-5 m-auto">
+            <div class="form-group m-1">
+                <button type="submit" class="btn btn-primary mr-1">Update</button>
+                <a asp-action="index" asp-controller="Team" class="btn btn-danger">Cancel</a>
+            </div>
+        </div>
+
+        <div class="col-md-5 radiusMode m-auto">
+            <img asp-append-version="true" src="@PhotPath" style="width:80px; height:auto; border-radius:9px;" class="m-1"/>
+          <span>Current Picture</span>
+        </div>
+    </div>
+    <br />
+</form>
+@section Scripts{
+
+    <script>
+        $(document).ready(function () {
+            $('.custom-file-input').on("change", function () {
+                var fileName = $(this).val().split("\\").pop();
+                $(this).next('.custom-file-label').html(fileName);
+            })
+        })
+    </script>
+    }
+
+

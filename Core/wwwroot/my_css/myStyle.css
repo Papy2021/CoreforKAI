@@ -1,0 +1,332 @@
+﻿body, html {
+    position:page;
+    height: 100vh;
+   color:white;
+    /*     justify-content: center;
+    align-items: center;*/
+    /*background:*/ 
+    background-image:linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));
+   /* background-repeat:no-repeat;*/
+    /*background-origin:content-box;*/
+    font-family: 'Eras ITC','Lucida Console', 'Century Gothic';
+
+    /*background-color: burlywood;*/
+    margin:0;
+}
+
+.manDiv {
+    background-image: linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));
+}
+
+nav {
+    background: linear-gradient(150deg, rgb(5, 43, 10), rgb(9, 17, 49));
+    border: 5px solid rgb(24, 30, 54);
+}
+
+
+.navHover a {
+font-size:17px;
+border:1px solid transparent;
+}
+
+.navHover a:hover {
+    border-radius: 9px;
+    background-color: rgb(24, 30, 54);
+    color:white;
+    border: 1px solid sienna;
+}
+
+.navDropMenu a{
+    color:antiquewhite;
+}
+
+.navHover button:hover {
+    border-radius: 9px;
+    background-color: rgb(5, 43, 10);
+    
+}
+
+
+footer {
+    background: linear-gradient(150deg, rgb(5, 43, 10), rgb(9, 17, 49));
+    border: 5px solid rgb(24, 30, 54);
+    margin-top:60px;
+    margin-bottom:20px;
+}
+
+.bTransp button{
+    background-color: transparent;
+
+}
+
+.aTransp a {
+    background-color: transparent;
+}
+
+.radiusInput input{
+    border-radius:13px
+}
+
+    /* .aTransp a:hover {
+        border-color: green;
+        background-color: transparent;
+        color:orangered;
+        
+    }*/
+
+.myCard {
+    background: linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));
+    color: aliceblue;
+    font-family: 'Eras ITC',Century;
+    border: 3px solid rgb(24, 30, 54);
+    
+}
+
+.cardHeader {
+  font-size: 8px;
+}
+
+.divContainer {
+    background: linear-gradient(150deg, rgb(5, 43, 10), rgb(9, 17, 49));
+}
+
+
+
+
+h4 {
+    background: linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));
+}
+
+.borderH4 {
+    border-color: rgb(5, 43, 10);
+}
+
+label{
+    color:aliceblue;
+    font-family:'Eras ITC','Lucida Console', 'Century Gothic';
+   
+}
+
+.btn{
+    width:80px;
+}
+
+.radiusMode {
+    border-radius: 20px;
+}
+
+.imageThumbail {
+    height: 180px;
+    width: auto;
+}
+
+.imageDetailsView{
+    height:350px;
+    width:auto;
+    
+}
+
+
+.animatedDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+ /*   background: linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));*/
+    background:transparent;
+    
+}
+
+
+.box {
+    position: relative;
+    width: 740px;
+    height: 485px;
+    background: linear-gradient(150deg, rgb(5, 43, 10), rgb(9, 17, 49));
+    /*background:#1c1c1c;*/
+    border-radius: 8px;
+    overflow: hidden;
+    object-fit: cover;
+}
+
+    .box::before {
+        content: '';
+        position: absolute;
+        width: 740px;
+        height: 485px;
+        top: -50%;
+        left: -50%;
+        background: linear-gradient(0deg,transparent,#ff0000,rgb(37, 42, 64));
+        transform-origin: bottom right;
+        animation: animate 8s linear infinite;
+        
+    }
+
+
+    .box::after {
+        content: '';
+        position: absolute;
+        width: 740px;
+        height: 485px;
+        top: -50%;
+        left: -50%;
+        background: linear-gradient(0deg,transparent,#ff0000,rgb(37, 42, 64));
+        transform-origin: bottom right;
+        animation: animate 8s linear infinite;
+        animation-delay: -4s;
+    }
+
+@keyframes animate{
+    0%
+    {
+       transform:rotate(0deg)
+    }
+    0% 
+    {
+        transform: rotate(360deg);
+        opacity:1;
+       
+    }
+
+    20%{
+        opacity:.8
+    }
+
+    40%{
+        opacity:.6         
+    }
+
+    70%{
+        opacity:.4
+    }
+
+    80%{
+        opacity:.2;
+    }
+    90%{
+        opacity:.1;
+    }
+    100%{
+        opacity:0;
+    }
+}
+
+
+
+.boxTarget {
+    position: absolute;
+    border-radius: 8px;
+    background: #28292d;
+    inset: 3.5px;
+    z-index: 10;
+    width: 730px;
+    height: 476px;
+    border: 3px solid black;
+}
+
+
+.logoImg{
+    height:150px;
+    width:auto;
+    margin:15px;
+    opacity:0.2;
+}
+
+
+
+
+
+@keyframes divAnimation{
+    from {
+        background: linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));
+    }
+    to {
+        background: linear-gradient(90deg,transparent,#ff0000,rgb(37, 42, 64));
+        /*background: linear-gradient(150deg, rgb(5, 43, 10), rgb(9, 17, 69));*/
+    }
+
+
+    0% {
+        color: dimgray;
+        font-size: 70px;
+    }
+    25% {
+        color: aqua;
+        font-size: 50px
+    }
+    50% {
+        color: cadetblue;
+        font-size: 40px
+    }
+    75% {
+        color: sienna;
+        font-size: 60px
+    }
+    100% {
+        color: white;
+        font-size: 70px
+    }
+}
+.myHeadDiv {
+    color: dimgrey;
+    background: linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));
+    font-family: Trattatello;
+    font-size: 70px;
+    height:85px;
+    animation-name: divAnimation;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes paragraphAnimation{
+    
+    from {
+        background: linear-gradient(150deg, rgb(5, 43, 10), rgb(9, 17, 49));
+    }
+    to {
+        background: linear-gradient(90deg,transparent,#ff0000,rgb(37, 42, 64));
+        /*background: linear-gradient(150deg, rgb(9, 17, 49), rgb(5, 43, 10));*/
+    }
+
+}
+
+.paragraphHeader {
+    background: linear-gradient(150deg, rgb(5, 43, 10), rgb(9, 17, 49));
+    border: 1px dotted white;
+    animation-name: paragraphAnimation;
+    animation-duration: 7s;
+    animation-iteration-count: infinite;
+}
+
+
+
+#slideshow div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0;
+    transition: opacity 6s ease-in-out;
+}
+
+
+    #slideshow div:first-child {
+        opacity: 1;
+    }
+
+#slideshow img {
+    width: 98.5%;
+    height: 98.5%;
+    object-fit: cover;
+}
+
+
+
+
+
+
+
+
+

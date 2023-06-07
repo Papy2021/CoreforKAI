@@ -1,0 +1,90 @@
+﻿@{
+    ViewBag.Title = "Welcome Page";
+    //var photopath = "~/SlideImages/PKT_4956.JPG";
+    var logoPath = "~/images/kailogo.png";
+}
+
+<div class="container container-fluid">
+    <h1 class="text-center alert alert-secondary  borderH4 radiusMode mt-1 myHeadDiv container-fluid">KAI Pictures</h1>
+</div>
+
+<div class="animatedDiv m-1 container container-fluid">
+    <div id="slideshow" class="box">
+        <div>
+            <img src="~/SlideImages/PKT_4956.JPG" asp-append-version="true" class="boxTarget img-fluid" />
+        </div>
+        <div>
+            <img src="~/SlideImages/PKT_0726.JPG" asp-append-version="true" class="boxTarget img-fluid" />
+        </div>
+        <div>
+            <img src="~/SlideImages/PKT_4953.JPG" asp-append-version="true" class="boxTarget img-fluid" />
+        </div>
+
+        <div>
+            <img src="~/SlideImages/IMG_3217.JPG" asp-append-version="true" class="boxTarget img-fluid" />
+        </div>
+
+        <div>
+            <img src="~/SlideImages/PKT_4971.JPG" asp-append-version="true" class="boxTarget img-fluid" />
+        </div>
+
+        <div>
+            <img src="~/SlideImages/PKT_4962.JPG" asp-append-version="true" class="boxTarget img-fluid" />
+        </div>
+    </div>
+</div>
+
+<section class="mt-5">
+    <div class="container m-0">
+        <div class="row m-auto">
+            <div class="col-md-3 paragraphHeader radiusMode mr-4 mb-3 borderSectionDiv">
+                <h5 class="mt-2">Location</h5>
+                <p class="text-justify">
+                    A Cape Town-based production company combining the experience of a few industry professionals 
+                    to produce top-quality documentaries, feature films, news inserts, corporate videos,
+                    multi-camera field productions for conferences and events; and media training.
+                </p>
+            </div>
+            <div class="col-md-4 paragraphHeader radiusMode borderSectionDiv mb-3">
+                <h5 class="mt-2">Clients</h5>
+                <p class ="text-justify">
+                    Some of our clients are: 
+                    SABC Special Assignment, Carte Blanche, Health-e News, 
+                    Xin Hua Chinese News Agency, WWF media training, 
+                    Big Fish Film School –training; E-Kasi Our Stories - 2 scripts; 
+                    Dept Arts and Culture Museums; Dept of Environmental Affairs - Working on Fire; 
+                    Reuters News Agency; Aljazeera News; eNCA Checkoint; Kyknet; 
+                    African Leadership Programme; Jacob Zuma Presidential Golf Challenge-gala; 
+                    TeleSUR News.
+                </p>
+            </div>
+            <div class="col-md-4 ml-auto">
+                <h5 class="mt-2">Director</h5>
+                <p class="text-justify">
+                    Creative Director/Producer  Johann Abrahams has been in the television industry 
+                    for more than 3 decades. At one stage he has been the Executive Producer of the SABC’s 
+                    award-winning investigative show, Special Assignment. He holds a Film and Broadcasting 
+                    degree from the University of Kansas in the USA, and a Masters's Degree in Film, Media, 
+                    and Theory from UCT. He currently also teaches at CPUT's Film School.
+                </p>
+                <
+            </div>
+        </div>
+        <div class="row paragraphHeader radiusMode">
+            <div class="col-md-4">
+                <img src="@logoPath" asp-append-version="true" class="img-fluid logoImg" />
+            </div>
+
+            <div class="col-md-8">
+                <p style="font-size:30px; margin:15px; color:sienna" class="text-justify">
+                    We bring to every project a team of veterans in film and television production, 
+                    delivering superb quality with every production at affordable rates.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+@section Scripts{
+    <script src="~/js/slideshow.js"></script>
+}
+
